@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-appset
+spec:
+  generateNamespace: true
+  applications:
+    - name: my-app
+      project: my-project
+      source:
+        repoURL: https://github.com/hemantbhosale916/argocd.git
+        targetRevision: HEAD
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+      postSync:
+        hooks:
+          - name: slack-notification
+            command: ["/bin/sh"]
+            args: ["-c", "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"ArgoCD ApplicationSet sync completed!\"}' $(kubectl get secret slack-webhook-secret -ojsonpath='{.data.webhook-url}' | base64 --decode)"]

@@ -1,1 +1,3 @@
-{"labe":"{app:frontend}"}
+labe {
+  app = "frontend"
+}

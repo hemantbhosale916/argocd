@@ -1,1 +1,6 @@
-{"app":"frontend","owner":"hemant"}
+{
+  "labs": {
+    "name": "frontend",
+    "owner": "hb"
+  }
+}

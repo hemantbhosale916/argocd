@@ -1,1 +1,8 @@
-{"labe":"app:frontend"}
+{
+  "labels": {
+    "app": "my-app",
+    "environment": "production",
+    "custom-label-1": "value1",
+    "custom-label-2": "value2"
+  }
+}

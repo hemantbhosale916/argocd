@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deployment
 spec:
-  replicas: 4  # Number of desired replicas (pods)
+  replicas: 2  # Number of desired replicas (pods)
   selector:
     matchLabels:
       app: nginx
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: nginx:latest  # Use the latest Nginx image from Docker Hub
+          image: nginx:alpine3.17  # Use the latest Nginx image from Docker Hub
           ports:
             - containerPort: 80  # Port the container listens on
